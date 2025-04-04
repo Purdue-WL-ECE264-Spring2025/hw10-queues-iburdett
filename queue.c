@@ -18,8 +18,6 @@ int number_of_moves(struct game_state start)
 {
     struct queue q; 
     q.data.head = NULL; 
-    int end = 1; 
-    int cnt_num = 1; 
 
     uint64_t *used = calloc(SIZE, sizeof(uint64_t)); //allocating my space for an array, wnt it to be initialized as 0; 
     if(used == NULL)
@@ -60,14 +58,20 @@ int number_of_moves(struct game_state start)
                 }
             }
         }
+        if (end) 
+        {
+            free_list(q.data);
+            free(used);
+            return current.num_steps;
+        }
     }
 
-    if (end) 
-    {
-        free_list(q.data);
-        free(visited);
-        return current.num_steps;
-    }
+    // if (end) 
+    // {
+    //     free_list(q.data);
+    //     free(visited);
+    //     return current.num_steps;
+    // }
 
     for(int i = 0; i < 4; i++)
     {
@@ -100,7 +104,7 @@ int number_of_moves(struct game_state start)
             int num_seen = 0; 
             int target = 0; 
 
-            for(j = 0; j < SIZE && !(num_seen || target); j++)
+            for(int j = 0; j < SIZE && !(num_seen || target); j++)
             {
                 size_t tester = (location + j) % SIZE; 
 
