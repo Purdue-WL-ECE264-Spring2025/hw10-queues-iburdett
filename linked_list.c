@@ -71,7 +71,7 @@ size_t remove_from_tail(struct linked_list *list)
 
   if(list->head->next == NULL)
   {
-    size_t *value = list->head->value; 
+    size_t value = list->head->value; 
     free(list->head); 
     list->head = NULL; 
     return value; 
@@ -86,7 +86,7 @@ size_t remove_from_tail(struct linked_list *list)
 
   size_t value = current->next->value; 
   free(current->next);
-  current->next; 
+  current->next = NULL; 
   return value; 
 }
 
