@@ -10,7 +10,7 @@ void enqueue(struct queue *q, struct game_state state)
 struct game_state dequeue(struct queue *q) 
 {
     size_t val = remove_from_head(&q->data); 
-    return deserilize(val); 
+    return deserialize(val); 
 }
 
 int number_of_moves(struct game_state start) 
@@ -20,7 +20,7 @@ int number_of_moves(struct game_state start)
     int end = 1; 
     int cnt_num = 1; 
 
-    uint64_t *used = calloc(size, sizeof(uint64_t)); //allocating my space for an array, wnt it to be initialized as 0; 
+    uint64_t *used = calloc(SIZE, sizeof(uint64_t)); //allocating my space for an array, wnt it to be initialized as 0; 
     if(used == NULL)
     {
         return -1;
@@ -40,7 +40,7 @@ int number_of_moves(struct game_state start)
         {
             for(int j = 0; j < 4 && (end != 0); j++)
             {
-                int tile = current.tiles[i][j]
+                int tile = current.tiles[i][j];
 
                 if (i == 3 && j == 3) 
                 {
@@ -99,9 +99,9 @@ int number_of_moves(struct game_state start)
             int num_seen = 0; 
             int target = 0; 
 
-            for(i = 0; i < SIZE && !(num_seen || target); i++)
+            for(j = 0; j < SIZE && !(num_seen || target); j++)
             {
-                size_t tester = (location + i) % SIZE; 
+                size_t tester = (location + j) % SIZE; 
 
                 if(used[tester] == 0)
                 {
@@ -117,12 +117,12 @@ int number_of_moves(struct game_state start)
 
             if(!num_seen)
             {
-                enqueue(&p, next_pos);
+                enqueue(&q, next_pos);
             }
         } 
     }
-    
- free_list(q.list); 
+
+ free_list(q.data); 
  free(used);
  return -1; 
 }

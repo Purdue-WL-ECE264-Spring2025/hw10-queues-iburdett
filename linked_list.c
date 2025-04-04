@@ -56,8 +56,8 @@ size_t remove_from_head(struct linked_list *list)
     return 0; 
   }
 
-  size_t hold = temp->value; 
-  list->head = temp->next; 
+  size_t hold = holder->value; 
+  list->head = holder->next; 
   free(holder)
   return hold; 
 }
