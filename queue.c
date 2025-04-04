@@ -1,6 +1,6 @@
 #include "queue.h"
 #include "tile_game.h"
-#include <stlib.h>
+#include <stdlib.h>
 #define SIZE 1000000
 
 void enqueue(struct queue *q, struct game_state state) 
