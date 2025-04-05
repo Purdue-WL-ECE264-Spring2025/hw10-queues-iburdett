@@ -120,67 +120,6 @@ int number_of_moves(struct game_state start)
             }
         }
 
-    // if (end) 
-    // {
-    //     free_list(q.data);
-    //     free(visited);
-    //     return current.num_steps;
-    // }
-
-    // for(int i = 0; i < 4; i++)
-    // {
-    //     struct game_state next_pos = current;
-
-    //     if(i ==0)
-    //     {
-    //         move_up(&next_pos);
-    //     }
-
-    //     if(i == 1)
-    //     {
-    //         move_down(&next_pos);
-    //     }
-
-    //     if(i ==2)
-    //     {
-    //         move_left(&next_pos);
-    //     }
-
-    //     if(i == 3)
-    //     {
-    //         move_right(&next_pos);
-    //     }
-
-    //     if(next_pos.num_steps != current.num_steps)
-    //     {
-    //         uint64_t s_state = serialize(next_pos);
-    //         size_t location = s_state % SIZE; 
-    //         int num_seen = 0; 
-    //         int target = 0; 
-
-    //         for(int j = 0; j < SIZE && !(num_seen || target); j++)
-    //         {
-    //             size_t tester = (location + j) % SIZE; 
-
-    //             if(used[tester] == 0)
-    //             {
-    //                 used[tester] = s_state;
-    //                 target = 1; 
-    //             }
-
-    //             else if(used[tester] == s_state)
-    //             {
-    //                 num_seen = 1; 
-    //             }
-    //         }
-
-    //         if(!num_seen)
-    //         {
-    //             enqueue(&q, next_pos);
-    //         }
-    //     } 
-    // }
-
  free_list(q.data); 
  free(used);
  return -1; 
